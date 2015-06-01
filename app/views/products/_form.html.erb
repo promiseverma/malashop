@@ -1,0 +1,19 @@
+<script type="text/javascript">var clicks = 2;</script>
+<%= simple_form_for(@product) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :product_number %>
+    <%= f.input :name %>
+    <div id="item-content">
+      <%= f.fields_for :items do |items| %>
+        <br><%= items.label "items" %><br>
+        <%= items.text_field :item_name, :class => "form-control" %>
+      <% end %>
+      <%= link_to "Add More", "javascript:void(0)", :onclick => "callExecuter(clicks++)" %>
+    </div>
+    <%= f.input :description %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
