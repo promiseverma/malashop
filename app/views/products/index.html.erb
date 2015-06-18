@@ -19,8 +19,9 @@
         <td><%= product.product_number %></td>
         <td><%= product.name %></td>
         <td><%= product.description %></td>
-        <td><% product.items.pluck(:item_name).each do |item| %>
-              <%= item %>,
+        <td><% product.items.pluck(:item_name).each_with_index do |item, index| %>
+              <%= item %>
+              <% if index < product.items.pluck(:item_name).length-1 %>,<% end %>
             <% end %>
         </td>
         <td><%= link_to 'Show', product %></td>
