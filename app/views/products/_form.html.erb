@@ -6,10 +6,11 @@
     <%= f.input :name %>
     <div id="item-content">
       <%= f.fields_for :items do |items| %>
-        <br><%= items.label "items" %><br>
-        <%= items.text_field :item_name, :class => "form-control" %>
+        <br><div><%= items.label "items" %><br>
+        <%= items.text_field :item_name, :class => "form-control" %></div>
       <% end %>
       <%= link_to "Add More", "javascript:void(0)", :onclick => "callExecuter(clicks++)" %>
+      <%= link_to "Delete Item", "javascript:void(0)", :onclick => "delExecuter(clicks++)" %>
     </div>
     <%= f.input :description %>
   </div>

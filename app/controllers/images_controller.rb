@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class ImagesController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -14,8 +14,7 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
-    @product.items.build
+    @image = Image.new
   end
 
   # GET /products/1/edit
@@ -25,10 +24,11 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    params[:image][:product_id] = params[:image][:product]
+    @image = Image.new(image_params)
     respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+      if @image.save
+        format.html { redirect_to products_path, notice: 'Image was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -65,7 +65,7 @@ class ProductsController < ApplicationController
   def add_image
     # byebug
     @product = Product.find(params[:product_id])
-    @image = Image.new
+    @product.images.build 
      # @product = Product.find(params[:product_id])
      #@product.images.build
      # @product.update
@@ -82,7 +82,7 @@ class ProductsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def product_params
-      params.require(:product).permit(:product_number, :name, :description, items_attributes: [:item_name], images_attributes: [:id, :avatar])
+    def image_params
+      params.require(:image).permit(:avatar, :product_id)
     end
 end

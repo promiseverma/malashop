@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150601071055) do
+ActiveRecord::Schema.define(version: 20150720200210) do
+
+  create_table "images", force: :cascade do |t|
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "avatar_file_name",    limit: 255
+    t.string   "avatar_content_type", limit: 255
+    t.integer  "avatar_file_size",    limit: 4
+    t.datetime "avatar_updated_at"
+    t.integer  "product_id",          limit: 4
+  end
 
   create_table "items", force: :cascade do |t|
     t.string   "item_name",  limit: 50

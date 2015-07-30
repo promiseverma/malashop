@@ -1,0 +1,14 @@
+<%= simple_form_for @image, url: images_path do |form| %>
+  <div class="form-inputs">  
+    <div id="image-content">   
+    
+    <br><div><%= form.label "images" %><br>
+      <%= form.input :avatar, as: :file %>  
+
+     <%= form.hidden_field :product, :value => params[:product_id] %>
+    </div> 
+  </div>
+  <div class="form-actions">
+    <%= form.button :submit %>
+  </div>
+<% end %>

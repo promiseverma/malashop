@@ -1,0 +1,14 @@
+<script type="text/javascript">var clicks = 2;</script>
+<%= simple_form_for(@image) do |f| %>
+  <div class="form-inputs">  
+    <div id="image-content">   
+    
+    <br><div><%= f.label "images" %><br>
+      <%= f.input :avatar, as: :file %>   
+      
+    </div> 
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
