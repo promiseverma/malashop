@@ -25,14 +25,15 @@ class ImagesController < ApplicationController
   # POST /products.json
   def create
     params[:image][:product_id] = params[:image][:product]
+    @product = Product.find(params[:image][:product_id])
     @image = Image.new(image_params)
     respond_to do |format|
       if @image.save
         format.html { redirect_to products_path, notice: 'Image was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.html { redirect_to product_add_image_path(@product), error: @image.errors }
+        format.json { render json: @image.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -40,7 +41,6 @@ class ImagesController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    byebug
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -55,7 +55,7 @@ class ImagesController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product.destroy
+    @image.destroy
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
@@ -78,7 +78,8 @@ class ImagesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      byebug
+      @image = Image.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

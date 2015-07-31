@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.includes(:items).all
+    @products = Product.includes(:items).paginate(:page => params[:page], :per_page => 5).order(created_at: :desc)
   end
 
   # GET /products/1
@@ -40,7 +40,6 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    byebug
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -83,6 +82,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:product_number, :name, :description, items_attributes: [:item_name], images_attributes: [:id, :avatar])
+      params.require(:product).permit(:product_number, :name, :description, items_attributes: [:item_name])
     end
 end

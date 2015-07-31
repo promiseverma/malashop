@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   	get "add_image"
   	patch "upload_image" => "products#upload_image"
   end
-  resource :images
-  patch '/images/:id/new', to: 'images#new'
+  resources :images
+  # patch '/images/:id/new', to: 'images#new'
 end
