@@ -3,14 +3,8 @@
 <script type="text/javascript">
   $(document).ready(function() {
     jQuery('a.gallery').colorbox({ 
-      width: "800px" ,
-      height: "700px",
       closeButton: true,
       opacity: 1.9,
-      onClosed: function ()
-        {
-          location.reload();
-        }
       });
   });
 </script>
@@ -32,12 +26,14 @@
 </p>
 
 <p>
+<table border=1>
   <strong style ="float: left;">Image:</strong>
   <% @product.images.each do |image| %>
-    <%= link_to image_tag(image.avatar.url(:thumb)), image.avatar.url, html_options = {:class => "gallery", :title => "Detail"  } %>&nbsp;
-    <%= link_to 'Destroy', "/images/#{image.id}", :confirm => 'Are you sure?', :method => :delete %>
+    <tr><td><%= link_to image_tag(image.avatar.url(:thumb)), image.avatar.url, html_options = {:class => "gallery", :title => "Detail"  } %></td>
+    <td><%= link_to 'Destroy', "/images/#{image.id}", :confirm => 'Are you sure?', :method => :delete %></td></tr>
   <% end %>
 </p>
+</table>
 <br/><br/><br/><br/><br/><br/>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

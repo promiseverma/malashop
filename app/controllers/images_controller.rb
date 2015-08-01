@@ -57,28 +57,16 @@ class ImagesController < ApplicationController
   def destroy
     @image.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to products_url, notice: 'Image was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
-  def add_image
-    # byebug
-    @product = Product.find(params[:product_id])
-    @product.images.build 
-     # @product = Product.find(params[:product_id])
-     #@product.images.build
-     # @product.update
-  end
 
-  def upload_image
-    byebug
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      byebug
       @image = Image.find(params[:id])
     end
 
