@@ -31,12 +31,12 @@ development:
 #   password:
 #   host: localhost
 
-# production:
-#   adapter: mysql2
-#   encoding: utf8
-#   reconnect: false
-#   database: malashop_production
-#   pool: 5
-#   username: malashop
-#   password:
-#   host: localhost
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: malashop_production
+  pool: 5
+  username: malashop
+  password:
+  host: localhost
