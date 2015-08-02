@@ -10,13 +10,13 @@ gem 'jbuilder', '~> 2.0'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'will_paginate', '~> 3.0.6'
 gem 'cowsay'
+gem 'devise'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
 gem 'bootstrap-sass'
-gem 'devise'
 gem 'mysql2'
 gem 'simple_form'
 group :development do
