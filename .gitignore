@@ -10,7 +10,7 @@
 /tmp/
 *.mwb
 log/development.log
-public/system/images
+public/system/images/*
 
 ## Specific to RubyMotion:
 .dat*
