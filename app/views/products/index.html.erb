@@ -24,10 +24,10 @@
               <% if index < product.items.pluck(:item_name).length-1 %>,<% end %>
             <% end %>
         </td>
-        <td><%= link_to 'Show', product,  data: { no_turbolink: true } %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Add Image', product_add_image_path(product) %></td>
+        <td><%= link_to image_tag("detail.png", :title => "Details"), product,  data: { no_turbolink: true } %></td>
+        <td><%= link_to image_tag("edit.png", :title => "Edit"), edit_product_path(product) %></td>
+        <td><%= link_to image_tag("cross-icon.png", :title => "Delete"), product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to image_tag("add_image.png", :title => "Add Image"), product_add_image_path(product) %></td>
       </tr>
     <% end %>
   </tbody>
