@@ -16249,3 +16249,13 @@ Processing by ProductsController#show as HTML
   Rendered layouts/_navigation.html.erb (40.1ms)
   Rendered layouts/_messages.html.erb (0.7ms)
 Completed 200 OK in 2432ms (Views: 2399.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-10-06 12:15:26 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (41.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.9ms)
+  Rendered layouts/_navigation.html.erb (2.2ms)
+  Rendered layouts/_messages.html.erb (0.5ms)
+Completed 200 OK in 390ms (Views: 360.6ms | ActiveRecord: 1.2ms)
