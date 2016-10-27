@@ -9,4 +9,14 @@
 <% if user_signed_in? %>
   <li><%#= link_to 'Users', users_path %></li>
   <li><%= link_to 'Products', products_path %></li>
+  <li class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Making
+		<span class="caret"></span></a>
+		<ul class="dropdown-menu">
+		  <li><a href="#">Balance Enquiry</a></li>
+		  <li><a href="#">Daily Result</a></li>
+		  <li><a href="#">Extra Material</a></li> 
+		</ul>
+  </li>
+  <li><%#= link_to 'Purchase', purchases_path %></li>
 <% end %>
