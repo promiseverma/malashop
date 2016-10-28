@@ -1,6 +1,7 @@
 class BalanceEnquiriesController < ApplicationController
   before_action :set_balance_enquiry, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  
   # GET /balance_enquiries
   # GET /balance_enquiries.json
   def index
