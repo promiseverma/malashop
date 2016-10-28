@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Balance Enquiries</h1>
+<table border="1" style="border-color: #BDBDBD;width: 100%;">
+  <thead>
+    <tr  style="background-color: darkgray;">
+      <th>Lena</th>
+      <th>Dena</th>
+      <th>Balance date</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @balance_enquiries.each do |balance_enquiry| %>
+      <tr>
+        <td><%= balance_enquiry.lena %></td>
+        <td><%= balance_enquiry.dena %></td>
+        <td><%= balance_enquiry.balance_date %></td>
+        <td><%= link_to 'Show', balance_enquiry %></td>
+        <td><%= link_to 'Edit', edit_balance_enquiry_path(balance_enquiry) %></td>
+        <td><%= link_to 'Destroy', balance_enquiry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Balance enquiry', new_balance_enquiry_path %>

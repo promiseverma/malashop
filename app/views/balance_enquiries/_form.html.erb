@@ -1,0 +1,27 @@
+<style type="text/css">
+	.form-inline2 .form-control{width:31%; display: inline-block;}
+	.form-inline2 .form-group label{display: block !important; width: 100%;}
+	.wrapper{width: 300px;margin: auto; }
+	@media screen and (max-width: 640px) {
+	.wrapper{width: 90%;margin: auto; }	
+
+}
+</style>
+<div class="wrapper">
+<%= simple_form_for(@balance_enquiry) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :lena %>
+    <%= f.input :dena %>
+    <div class="row">
+    	<div class="col-md-12 form-inline2">
+    		<%= f.input :balance_date, :class => "form-control" %>	
+    	</div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+</div>

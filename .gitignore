@@ -16,6 +16,7 @@ public/system/images/*
 .dat*
 .repl_history
 build/
+/bin/*
 
 ## Documentation cache and generated files:
 /.yardoc/

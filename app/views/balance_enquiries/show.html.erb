@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Lena:</strong>
+  <%= @balance_enquiry.lena %>
+</p>
+
+<p>
+  <strong>Dena:</strong>
+  <%= @balance_enquiry.dena %>
+</p>
+
+<p>
+  <strong>Balance date:</strong>
+  <%= @balance_enquiry.balance_date %>
+</p>
+
+<%= link_to 'Edit', edit_balance_enquiry_path(@balance_enquiry) %> |
+<%= link_to 'Back', balance_enquiries_path %>

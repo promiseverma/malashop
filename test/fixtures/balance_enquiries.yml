@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lena: 1
+  dena: 1
+  balance_date: 2016-10-28
+
+two:
+  lena: 1
+  dena: 1
+  balance_date: 2016-10-28
