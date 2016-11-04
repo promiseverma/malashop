@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  resources :customers do
+    member do
+      resources :accounts, only: [:index, :new, :create]
+    end
+  end
+  resources :accounts, only: [:show, :edit, :update, :destroy]
   resources :balance_enquiries
 
   root to: 'visitors#index'

@@ -1,0 +1,19 @@
+<%= simple_form_for(@account) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="row">
+      <div class="col-md-12 form-inline2">
+    <%= f.input :transaction_date, :class => "form-control" %>
+    </div>
+    </div>
+    <%= f.input :particular %>
+    <%= f.input :debit %>
+    <%= f.input :credit %>
+    <%= f.association :customer %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => "btn btn-primary" %>
+  </div>
+<% end %>

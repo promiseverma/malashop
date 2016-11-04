@@ -1,3 +1,10 @@
 /*.form-len{width: 20% !important;}
 .form-control{width: 240px !important;}*/
 tr:nth-child(even) {background: #D8CEF6}
+.form-inline2 .form-control{width:31%; display: inline-block;}
+.form-inline2 .form-group label{display: block !important; width: 100%;}
+.wrapper{width: 300px;margin: auto; }
+@media screen and (max-width: 640px) {
+.wrapper{width: 90%;margin: auto; }	
+
+}
