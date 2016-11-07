@@ -1,0 +1,35 @@
+<!-- <p id="notice"><%#= notice %></p> -->
+
+<h1>Listing Materials</h1>
+<%= link_to 'New Material', new_material_path, :class => "btn btn-primary", :style => "float: right;margin-bottom: 10px;" %>
+
+<table  border="1" style="border-color: #BDBDBD;" width="100%">
+  <thead>
+    <tr style="background-color: darkgray;">
+      <th width="25%">Name</th>
+      <th width="25%">Unit</th>
+      <th width="25%">Price</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @materials.each do |material| %>
+      <tr>
+        <td><%= material.name %></td>
+        <td><%= material.unit %></td>
+        <td><%= material.price %></td>
+        <td><%= link_to image_tag("detail.png", :title => "Details"), material %></td>
+        <td><%= link_to image_tag("edit.png", :title => "Edit"), edit_material_path(material) %></td>
+        <td><%= link_to image_tag("cross-icon.png", :title => "Delete"), material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<div class="digg_pagination" style="float: right;">
+  
+  <%= will_paginate @materials, :container => false %>
+</div>
+<br>

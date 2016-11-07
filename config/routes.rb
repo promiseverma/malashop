@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :materials
+
   resources :customers do
     member do
       resources :accounts, only: [:index, :new, :create]
