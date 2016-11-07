@@ -1,0 +1,2 @@
+module KarigarsHelper
+end

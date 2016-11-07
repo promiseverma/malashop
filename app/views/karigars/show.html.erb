@@ -1,0 +1,19 @@
+<!-- <p id="notice"><%#= notice %></p> -->
+
+<p>
+  <strong>Name:</strong>
+  <%= @karigar.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @karigar.address %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @karigar.phone %>
+</p>
+
+<%= link_to 'Edit', edit_karigar_path(@karigar) %> |
+<%= link_to 'Back', karigars_path %>

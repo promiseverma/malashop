@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :karigars
+
   resources :materials
 
   resources :customers do
