@@ -1,11 +1,10 @@
 class AccountsController < ApplicationController
   before_action :set_account, only: [:show, :edit, :update, :destroy]
   before_action :set_customer, only: [:index, :new, :create]
-
+  before_action :authenticate_user!
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = Account.all
   end
 
   # GET /accounts/1

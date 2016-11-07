@@ -10,7 +10,9 @@
     <%= f.input :particular %>
     <%= f.input :debit %>
     <%= f.input :credit %>
-    <%= f.association :customer %>
+    <% if !@account.persisted? %>
+    <%= f.association :customer, :selected => @customer.id, :readonly => true %>
+    <% end %>
   </div>
 
   <div class="form-actions">
