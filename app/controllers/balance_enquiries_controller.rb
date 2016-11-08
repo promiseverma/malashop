@@ -5,7 +5,7 @@ class BalanceEnquiriesController < ApplicationController
   # GET /balance_enquiries
   # GET /balance_enquiries.json
   def index
-    @balance_enquiries = BalanceEnquiry.all.paginate(:page => params[:page], :per_page => 5).order(created_at: :desc)
+    @balance_enquiries = BalanceEnquiry.all.paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
   end
 
   # GET /balance_enquiries/1
