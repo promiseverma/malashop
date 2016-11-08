@@ -28,10 +28,7 @@
   </tbody>
 </table>
 <br>
-<div class="digg_pagination">
-  <div class="page_info">
-    <%= page_entries_info @customers %>
-  </div>
+<div class="digg_pagination" style="float: right;">
   <%= will_paginate @customers, :container => false %>
 </div>
 <br>

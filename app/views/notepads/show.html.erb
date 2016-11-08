@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Note date:</strong>
+  <%= @notepad.note_date %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @notepad.name %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @notepad.amount %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @notepad.status %>
+</p>
+
+<%= link_to 'Edit', edit_notepad_path(@notepad) %> |
+<%= link_to 'Back', notepads_path %>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :notepads
+
   resources :karigars
 
   resources :materials

@@ -1,0 +1,18 @@
+<%= simple_form_for(@notepad) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :status, collection: Notepad.statuses,prompt: "Select type" %>
+    <%= f.input :name %>
+    <%= f.input :amount %>
+    <div class="row">
+      <div class="col-md-12 form-inline2">
+        <%= f.input :note_date, :class => "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => "btn btn-primary" %>
+  </div>
+<% end %>
