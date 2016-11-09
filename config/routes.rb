@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   resources :notepads
 
-  resources :karigars
+  resources :karigars do
+    resources :balance_enquiries
+  end
 
   resources :materials
 
@@ -12,7 +14,6 @@ Rails.application.routes.draw do
     end
   end
   resources :accounts, only: [:show, :edit, :update, :destroy]
-  resources :balance_enquiries
 
   root to: 'visitors#index'
   devise_for :users

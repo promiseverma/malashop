@@ -1,6 +1,8 @@
-<h1>Editing Balance Enquiry</h1>
+<div class="wrapper">
+<h3>Editing Balance Enquiry</h3>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @balance_enquiry %> |
-<%= link_to 'Back', balance_enquiries_path %>
+<%= link_to 'Show',karigar_balance_enquiry_path(@karigar, @balance_enquiry) %> |
+<%= link_to 'Back', karigar_balance_enquiries_path(@karigar) %>
+</div>

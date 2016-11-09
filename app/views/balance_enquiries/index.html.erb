@@ -1,6 +1,7 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%#= notice %></p> -->
 
-<h1>Listing Balance Enquiries</h1>
+<h3>Listing Balance Enquiries</h3>
+<%= link_to 'New Balance enquiry', new_karigar_balance_enquiry_path, :class => "btn btn-primary", :style => "float: right;margin-bottom: 10px;" %>
 <table border="1" style="border-color: #BDBDBD;width: 100%;">
   <thead>
     <tr  style="background-color: darkgray;">
@@ -17,9 +18,9 @@
         <td><%= balance_enquiry.lena %></td>
         <td><%= balance_enquiry.dena %></td>
         <td><%= balance_enquiry.balance_date %></td>
-        <td><%= link_to 'Show', balance_enquiry %></td>
-        <td><%= link_to 'Edit', edit_balance_enquiry_path(balance_enquiry) %></td>
-        <td><%= link_to 'Destroy', balance_enquiry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to image_tag("detail.png", :title => "Details"), karigar_balance_enquiry_path(@karigar, balance_enquiry) %></td>
+        <td><%= link_to image_tag("edit.png", :title => "Edit"), edit_karigar_balance_enquiry_path(@karigar, balance_enquiry) %></td>
+        <td><%= link_to image_tag("cross-icon.png", :title => "Delete"), karigar_balance_enquiry_path(@karigar, balance_enquiry), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +28,3 @@
 
 <br>
 
-<%= link_to 'New Balance enquiry', new_balance_enquiry_path %>
