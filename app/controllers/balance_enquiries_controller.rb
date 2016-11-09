@@ -6,7 +6,7 @@ class BalanceEnquiriesController < ApplicationController
   # GET /balance_enquiries
   # GET /balance_enquiries.json
   def index
-    @balance_enquiries = BalanceEnquiry.all.paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+    @balance_enquiries = BalanceEnquiry.where(karigar_id: params[:karigar_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
   end
 
   # GET /balance_enquiries/1
@@ -26,8 +26,8 @@ class BalanceEnquiriesController < ApplicationController
   # POST /balance_enquiries
   # POST /balance_enquiries.json
   def create
+    params["balance_enquiry"]["karigar_id"] = params["karigar_id"]
     @balance_enquiry = BalanceEnquiry.new(balance_enquiry_params)
-
     respond_to do |format|
       if @balance_enquiry.save
         format.html { redirect_to karigar_balance_enquiries_path(@karigar), notice: 'Balance enquiry was successfully created.' }
@@ -71,7 +71,7 @@ class BalanceEnquiriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def balance_enquiry_params
-      params.require(:balance_enquiry).permit(:lena, :dena, :balance_date)
+      params.require(:balance_enquiry).permit(:lena, :dena, :balance_date, :karigar_id)
     end
 
     def set_karigar

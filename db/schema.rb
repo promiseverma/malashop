@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108084900) do
+ActiveRecord::Schema.define(version: 20161109085752) do
 
   create_table "accounts", force: :cascade do |t|
     t.date     "transaction_date"
@@ -31,7 +31,10 @@ ActiveRecord::Schema.define(version: 20161108084900) do
     t.date     "balance_date"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "karigar_id",   limit: 4
   end
+
+  add_index "balance_enquiries", ["karigar_id"], name: "index_balance_enquiries_on_karigar_id", using: :btree
 
   create_table "customers", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -114,5 +117,6 @@ ActiveRecord::Schema.define(version: 20161108084900) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "accounts", "customers"
+  add_foreign_key "balance_enquiries", "karigars"
   add_foreign_key "items", "products"
 end
