@@ -6,3 +6,9 @@ function delExecuter(){
   }
 
 
+  $(document).ready(function() {
+    jQuery('a.gallery').colorbox({ 
+      closeButton: true,
+      opacity: 1.9,
+      });
+  });

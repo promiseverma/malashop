@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag "colorbox" %>
+<%= javascript_include_tag "jquery.colorbox-min" %>
+<!-- <p id="notice"><%#= notice %></p> -->
 
 <h3>Listing Products</h3>
 <div class="digg_pagination">
@@ -12,6 +14,7 @@
     <tr style="background-color: darkgray;">
       <th width="5%">Product number</th>
       <th width="12%">Name</th>
+      <th width="20%">Image</th>
       <th width="12%">Description</th>
       <th width="12%">Items</th>
       <th colspan="4" width="10%">Actions</th>
@@ -23,6 +26,11 @@
       <tr>
         <td><%= product.product_number %></td>
         <td><%= product.name %></td>
+        <td>
+          <% product.images.each do |image| %>
+            <%= link_to image_tag(image.avatar.url(:thumb)), image.avatar.url, html_options = {:class => "gallery", :title => "Main Image",:style => "float:left;margin: 3px;" } %>
+          <% end %>
+        </td>
         <td><%= product.description %></td>
         <td><% product.items.pluck(:item_name).each_with_index do |item, index| %>
               <%= item %>
