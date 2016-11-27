@@ -15,9 +15,8 @@
       <th width="5%">Product number</th>
       <th width="12%">Name</th>
       <th width="20%">Image</th>
-      <th width="12%">Description</th>
-      <th width="12%">Items</th>
-      <th colspan="4" width="10%">Actions</th>
+      <th width="12%">Materials</th>
+      <th colspan="5" width="10%">Actions</th>
     </tr>
   </thead>
 
@@ -31,16 +30,17 @@
             <%= link_to image_tag(image.avatar.url(:thumb)), image.avatar.url, html_options = {:class => "gallery", :title => "Main Image",:style => "float:left;margin: 3px;" } %>
           <% end %>
         </td>
-        <td><%= product.description %></td>
-        <td><% product.items.pluck(:item_name).each_with_index do |item, index| %>
-              <%= item %>
-              <% if index < product.items.pluck(:item_name).length-1 %>,<% end %>
-            <% end %>
-        </td>
+        <td><%= product.materials.pluck(:name).join(', ')%></td>
+        <!-- <td><%# product.items.pluck(:item_name).each_with_index do |item, index| %>
+              <%#= item %>
+              <%# if index < product.items.pluck(:item_name).length-1 %>,<%# end %>
+            <%# end %>
+        </td> -->
         <td><%= link_to image_tag("detail.png", :title => "Details"), product,  data: { no_turbolink: true } %></td>
         <td><%= link_to image_tag("edit.png", :title => "Edit"), edit_product_path(product) %></td>
         <td><%= link_to image_tag("cross-icon.png", :title => "Delete"), product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to image_tag("add_image.png", :title => "Add Image"), product_add_image_path(product) %></td>
+        <td><%= link_to "Calculate Total", calculate_total_product_path(product) %></td>
       </tr>
     <% end %>
   </tbody>

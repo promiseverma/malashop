@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161109085752) do
+ActiveRecord::Schema.define(version: 20161127083620) do
 
   create_table "accounts", force: :cascade do |t|
     t.date     "transaction_date"
@@ -79,6 +79,13 @@ ActiveRecord::Schema.define(version: 20161109085752) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "materials_products", id: false, force: :cascade do |t|
+    t.integer "product_id",  limit: 4, null: false
+    t.integer "material_id", limit: 4, null: false
+  end
+
+  add_index "materials_products", ["material_id", "product_id"], name: "index_materials_products_on_material_id_and_product_id", using: :btree
 
   create_table "notepads", force: :cascade do |t|
     t.date     "note_date"

@@ -1,0 +1,21 @@
+<%= simple_form_for(@product) do |f| %>
+	<table border="1">
+	<tr><td></td><td>Quantity</td><td>Unit</td><td>Calculated Price</td></tr>
+	<% @product.materials.each_with_index do |material, index| %>
+	<tr>
+		<td>
+			<%= material.name %>&nbsp;&nbsp;[<%= material.unit %>, <%= material.price%>]
+		</td>
+		<td>
+			<%= text_field_tag :quantity, nil, :id => "quantity_#{index}" %>
+		</td>
+		<td> 
+			<%= select_tag :unit, options_for_select(get_unit) ,prompt: "Select unit", :id => "unit_#{index}", :onchange => "calculate_price('#{material.unit}', #{material.price}, #{index}, this)" %>
+		</td>
+		<td id="cal_<%= index %>"></td>
+	</tr>
+	<% end %>
+	<tr><td colspan="2"></td><td><input type="button" name="" id="" onclick="get_total()" value="Total"></td><td id="total"></td></tr>
+	</table>
+	
+<% end %>

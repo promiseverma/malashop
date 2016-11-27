@@ -1,16 +1,21 @@
-<script type="text/javascript">var clicks = 1;</script>
+<script type="text/javascript">var clicks = 1;
+</script>
 <%= simple_form_for(@product) do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">
     <%= f.input :product_number %>
     <%= f.input :name %>
     <div id="item-content">
-      <%= f.fields_for :items do |items| %>
-        <div><%= items.label "items" %>
-        <%= items.text_field :item_name, :class => "form-control" %></div>
-      <% end %>
-      <%= link_to "Add More", "javascript:void(0)", :onclick => "callExecuter(clicks++)" %>
-      <%= link_to "Delete Item", "javascript:void(0)", :onclick => "delExecuter()" %>
+      <%#= f.fields_for :items do |items| %>
+        <div><%#= items.label "items" %>
+        <%#= items.text_field :item_name, :class => "form-control" %></div>
+      <%# end %>
+      <%#= link_to "Add More", "javascript:void(0)", :onclick => "callExecuter(clicks++)" %>
+      <%#= link_to "Delete Item", "javascript:void(0)", :onclick => "delExecuter()" %>
+    </div>
+    <div class="field">
+    <%= f.label :material_ids, "Materials" %><br />
+    <%= f.collection_select :material_ids, Material.order(:created_at), :id, :name, {}, {multiple: true} %>
     </div>
     <%= f.input :description %>
   </div>
@@ -18,3 +23,9 @@
     <%= f.button :submit, :class => "btn btn-primary" %>
   </div>
 <% end %>
+<script type="text/javascript">
+  $("select").multipleSelect({
+            multiple: true,
+            multipleWidth: 110
+            });
+</script>

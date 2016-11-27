@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :calculate_total]
   before_action :authenticate_user!
   # GET /products
   # GET /products.json
   def index
-    @products = Product.includes(:items).paginate(:page => params[:page], :per_page => 5).order(created_at: :desc)
+    @products = Product.includes(:items, :materials).paginate(:page => params[:page], :per_page => 5).order(created_at: :desc)
   end
 
   # GET /products/1
@@ -71,7 +71,10 @@ class ProductsController < ApplicationController
   end
 
   def upload_image
-    byebug
+  end
+
+  def calculate_total
+    
   end
 
   private
@@ -82,6 +85,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:product_number, :name, :description, items_attributes: [:item_name])
+      params.require(:product).permit(:product_number, :name, :description, items_attributes: [:item_name], :material_ids => [])
     end
 end

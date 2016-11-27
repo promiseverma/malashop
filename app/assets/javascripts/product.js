@@ -12,3 +12,68 @@ function delExecuter(){
       opacity: 1.9,
       });
   });
+
+function calculate_price(unit, price, index, elem) {
+
+  switch(unit) {
+    case "Pcs":
+        if ($("#unit_"+index).val() == "Pcs") {
+          $("#cal_"+index).html($("#quantity_"+index).val()*price);
+        }
+        else if($("#unit_"+index).val() == "Dozen"){
+          $("#cal_"+index).html(($("#quantity_"+index).val()*price)*12);
+        }
+        else if($("#unit_"+index).val() == "Gross"){
+          $("#cal_"+index).html(($("#quantity_"+index).val()*price)*144);
+        }
+        break;
+    case "Dozen":
+        if ($("#unit_"+index).val() == "Pcs") {
+          $("#cal_"+index).html(($("#quantity_"+index).val()*price)/12);
+        }
+        else if($("#unit_"+index).val() == "Dozen"){
+          $("#cal_"+index).html($("#quantity_"+index).val()*price);
+        }
+        else if($("#unit_"+index).val() == "Gross"){
+          $("#cal_"+index).html(($("#quantity_"+index).val()*price)*12);
+        }
+        break;
+    case "Gross":
+        if ($("#unit_"+index).val() == "Pcs") {
+          $("#cal_"+index).html(($("#quantity_"+index).val()*price)/144);
+        }
+        else if($("#unit_"+index).val() == "Dozen"){
+          $("#cal_"+index).html(($("#quantity_"+index).val()*price)/12);
+        }
+        else if($("#unit_"+index).val() == "Gross"){
+          $("#cal_"+index).html($("#quantity_"+index).val()*price);
+        }
+        break;
+    case "Kilogram":
+        if ($("#unit_"+index).val() == "Kilogram") {
+          $("#cal_"+index).html($("#quantity_"+index).val()*price);
+        }
+        else if($("#unit_"+index).val() == "Gram"){
+          $("#cal_"+index).html(($("#quantity_"+index).val()*price)/1000);
+        }
+        break;
+    case "Gram":
+        if ($("#unit_"+index).val() == "Kilogram") {
+          $("#cal_"+index).html(($("#quantity_"+index).val()*price)*1000);
+        }
+        else if($("#unit_"+index).val() == "Gram"){
+          $("#cal_"+index).html($("#quantity_"+index).val()*price);
+        }
+        break;
+    default:
+        alert("Invalid Entry.");
+  }
+}
+
+function get_total() {
+  var total = 0;
+  $.each($( "td[id^='cal_']" ), function( index, value ) {
+    total += parseInt($("#"+value.id).html());
+  });
+  $("#total").html(total);
+}

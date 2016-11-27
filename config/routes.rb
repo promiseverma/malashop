@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :products do
+    member do
+      get 'calculate_total'
+    end
   	get "add_image"
   	patch "upload_image" => "products#upload_image"
   end
