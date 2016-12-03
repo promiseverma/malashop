@@ -3,12 +3,6 @@
 <!-- <p id="notice"><%#= notice %></p> -->
 
 <h3>Listing Products</h3>
-<div class="digg_pagination">
-    <div class="page_info">
-      <%= page_entries_info @products %>
-    </div>
-    <%= will_paginate @products, :container => false %>
-  </div>
 <table border="1" style="border-color: #BDBDBD;">
   <thead>
     <tr style="background-color: darkgray;">
@@ -47,5 +41,9 @@
 </table>
 <%#= will_paginate @products, renderer: BootstrapPagination::Rails %>
 <br>
+<div class="digg_pagination" , style = "float: right;">
+    
+    <%= will_paginate @products, :container => false %>
+  </div>
 
 <%= link_to 'New Product', new_product_path, :class => "btn btn-primary" %>
