@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.includes(:items, :materials).paginate(:page => params[:page], :per_page => 5).order(created_at: :desc)
+    @products = Product.includes(:items, :materials, :prices).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
   end
 
   # GET /products/1
@@ -25,6 +25,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
+    params["product"]["material_ids"] = params["product"]["material_ids"].reject{|i| i==""}
     @product = Product.new(product_params)
     respond_to do |format|
       if @product.save
@@ -85,6 +86,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:product_number, :name, :description, items_attributes: [:item_name], :material_ids => [])
+      params.require(:product).permit(:product_number, :name, :description, :total_price, :majdoori, items_attributes: [:item_name], :material_ids => [], prices_attributes:[:quantity, :calculated_price, :unit, :id])
     end
 end

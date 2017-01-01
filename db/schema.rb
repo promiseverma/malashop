@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127083620) do
+ActiveRecord::Schema.define(version: 20170101073831) do
 
   create_table "accounts", force: :cascade do |t|
     t.date     "transaction_date"
@@ -96,12 +96,27 @@ ActiveRecord::Schema.define(version: 20161127083620) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "prices", force: :cascade do |t|
+    t.integer  "product_id",       limit: 4
+    t.integer  "material_id",      limit: 4
+    t.integer  "quantity",         limit: 4
+    t.float    "calculated_price", limit: 24
+    t.string   "unit",             limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "prices", ["material_id"], name: "index_prices_on_material_id", using: :btree
+  add_index "prices", ["product_id"], name: "index_prices_on_product_id", using: :btree
+
   create_table "products", force: :cascade do |t|
     t.integer  "product_number", limit: 4
     t.string   "name",           limit: 45
     t.text     "description",    limit: 65535
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.float    "total_price",    limit: 24
+    t.float    "majdoori",       limit: 24
   end
 
   create_table "users", force: :cascade do |t|
@@ -126,4 +141,6 @@ ActiveRecord::Schema.define(version: 20161127083620) do
   add_foreign_key "accounts", "customers"
   add_foreign_key "balance_enquiries", "karigars"
   add_foreign_key "items", "products"
+  add_foreign_key "prices", "materials"
+  add_foreign_key "prices", "products"
 end
