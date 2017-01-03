@@ -72,8 +72,9 @@ function calculate_price(unit, price, index, elem) {
 function get_total() {
   var total = 0;
   $.each($( "td[id^='cal_'] .cal_price" ), function( index, value ) {
-    total += parseInt($("#"+value.id).val());
+    total += parseFloat($("#"+value.id).val());
   });
-  total += parseInt($("#product_majdoori").val());
+  total += parseFloat($("#product_majdoori").val());
+  total = total/$("#per_piece").val();
   $("#product_total_price").val(total);
 }
