@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170103150212) do
+ActiveRecord::Schema.define(version: 20170103154658) do
 
   create_table "accounts", force: :cascade do |t|
     t.date     "transaction_date"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 20170103150212) do
     t.datetime "updated_at",                                            null: false
     t.float    "majdoori",       limit: 24
     t.decimal  "total_price",                  precision: 10, scale: 3
+    t.integer  "piece",          limit: 4
   end
 
   create_table "users", force: :cascade do |t|

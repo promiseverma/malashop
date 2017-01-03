@@ -74,7 +74,7 @@ function get_total() {
   $.each($( "td[id^='cal_'] .cal_price" ), function( index, value ) {
     total += parseFloat($("#"+value.id).val());
   });
+  total = (total/$("#product_piece").val())*12;
   total += parseFloat($("#product_majdoori").val());
-  total = total/$("#per_piece").val();
   $("#product_total_price").val(total);
 }

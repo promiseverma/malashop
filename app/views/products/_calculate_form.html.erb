@@ -18,9 +18,9 @@
 	</tr>
 	<% index = index + 1 %>
 	<% end %>
+	<tr><td colspan="3" align="right"><b>Per Piece</b></td><td><%= f.text_field :piece, :style => "width: 138px;" %> x 12</td></tr>
 	<tr><td colspan="3" align="right"><b>Majdoori</b></td><td><%= f.text_field :majdoori %></td></tr>
-	<tr><td colspan="3" align="right"><b>Per Piece</b></td><td><input type="text" name="per_piece" id='per_piece'></td></tr>
-	<tr><td colspan="2"></td><td><input type="button" name="" id="" onclick="get_total()" value="Total"></td><td id="total"><%= f.text_field :total_price %></td></tr>
+	<tr><td colspan="3" align="right"><input type="button" name="" id="" onclick="get_total()" value="Total"></td><td id="total"><%= f.text_field :total_price %></td></tr>
 	<tr><td colspan="3"><input type="submit"></td><td id="total"></td></tr>
 	</table>
 	
