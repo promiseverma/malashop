@@ -12,10 +12,10 @@ gem 'cowsay'
 gem 'devise'
 group :development, :test do
   gem 'byebug'
-  gem 'rspec-rails'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
+gem 'rspec-rails'
 gem 'bootstrap-sass'
 gem 'mysql2'
 gem 'simple_form'
