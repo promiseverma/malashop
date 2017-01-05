@@ -9,4 +9,13 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :prices
   accepts_nested_attributes_for :images
   accepts_nested_attributes_for :materials
+
+  	def self.search(search)
+	  if search
+	    where('name LIKE ?', "%#{search}%")
+	  else
+	    where(1)
+	  end
+  	end
+
 end

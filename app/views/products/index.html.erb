@@ -3,6 +3,12 @@
 <!-- <p id="notice"><%#= notice %></p> -->
 
 <h3>Listing Products</h3>
+<%= form_tag products_path, :method => 'get', :id => "products_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
 <table border="1" style="border-color: #BDBDBD;">
   <thead>
     <tr style="background-color: darkgray;">
