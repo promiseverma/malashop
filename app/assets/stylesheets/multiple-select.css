@@ -87,6 +87,8 @@
     box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
 }
 
+div.ms-drop.bottom{width: 500px !important;}
+
 .ms-drop.top {
     bottom: 100%;
     -webkit-box-shadow: 0 -4px 5px rgba(0, 0, 0, .15);
