@@ -1,6 +1,12 @@
 <!-- <p id="notice"><%#= notice %></p> -->
 
 <h3>Listing Materials</h3>
+<%= form_tag materials_path, :method => 'get', :id => "materials_search", :style => "    float: left;" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
 <%= link_to 'New Material', new_material_path, :class => "btn btn-primary", :style => "float: right;margin-bottom: 10px;" %>
 
 <table  border="1" style="border-color: #BDBDBD;" width="100%">
