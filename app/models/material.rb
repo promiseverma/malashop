@@ -1,6 +1,6 @@
 class Material < ActiveRecord::Base
 
-	has_many :products, through: :prices
+	has_many :products, through: :prices, :dependent => :destroy
 	has_many :prices
 
 	accepts_nested_attributes_for :products
@@ -56,7 +56,7 @@ class Material < ActiveRecord::Base
 							when "Kilogram"
 								new_price = price.quantity * self.price
 							when "Gram"
-								new_price = price.quantity * (self.price * 1000)
+								new_price = price.quantity * (self.price/1000)
 						end
 				  when "Gram"
 				  	case price.unit
