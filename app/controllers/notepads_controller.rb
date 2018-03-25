@@ -5,7 +5,7 @@ class NotepadsController < ApplicationController
   # GET /notepads
   # GET /notepads.json
   def index
-    @notepads_liye = Notepad.where(status: 0).paginate(:page => params[:liye_page], :per_page => 10).order(created_at: :desc)
+    @notepads_liye = Notepad.where(status: 0).paginate(:page => params[:liye_page], :per_page => 2).order(created_at: :desc)
     @notepads_diye = Notepad.where(status: 1).paginate(:page => params[:diye_page], :per_page => 10).order(created_at: :desc)
   end
 
@@ -59,6 +59,14 @@ class NotepadsController < ApplicationController
   # DELETE /notepads/1.json
   def destroy
     @notepad.destroy
+    respond_to do |format|
+      format.html { redirect_to notepads_url, notice: 'Notepad was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def delete_multiple
+    Notepad.where(:id => params[:notepad_ids]).destroy_all
     respond_to do |format|
       format.html { redirect_to notepads_url, notice: 'Notepad was successfully destroyed.' }
       format.json { head :no_content }

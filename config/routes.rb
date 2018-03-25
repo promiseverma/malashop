@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :notepads
+  resources :notepads do
+    collection do
+      delete :delete_multiple
+    end
+  end
 
   resources :karigars do
     resources :balance_enquiries

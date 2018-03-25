@@ -3,10 +3,12 @@
 <div class="table-wrapper">
 <h3>Listing Notepads</h3>
 <%= link_to 'New Notepad', new_notepad_path, :class => "btn btn-primary", :style => "margin-bottom: 10px;" %><br>
+<%= form_tag delete_multiple_notepads_path, method: :delete do %>
 <table border="1" style="border-color: #BDBDBD;float: left;" width="49%">
   <thead>
-    <tr style="background-color: beige;"><td colspan="5"  align="center"><h5><b>Liye</b></h5></td></tr>
+    <tr style="background-color: beige;"><td colspan="6"  align="center"><h5><b>Liye</b></h5></td></tr>
     <tr style="background-color: darkgray;">
+      <th>Delete</th>
       <th>Note date</th>
       <th>Name</th>
       <th>Amount</th>
@@ -17,6 +19,7 @@
   <tbody>
     <% @notepads_liye.each do |notepad| %>
       <tr>
+        <td><%= check_box_tag "notepad_ids[]", notepad.id %></td>
         <td><%= notepad.note_date %></td>
         <td><%= notepad.name %></td>
         <td><%= notepad.amount %></td>
@@ -25,7 +28,8 @@
       </tr>
     <% end %>
     <tr style="background-color: white">
-      <td colspan="5">
+      <td colspan="6">
+        <%= submit_tag "Delete Note"%>
         <div class="digg_pagination" style="float: right;">
         <%= will_paginate @notepads_liye, :param_name => 'liye_page', :container => false %>
         </div>
@@ -33,10 +37,14 @@
     </tr>
   </tbody>
 </table>
+
+<% end %>
+<%= form_tag delete_multiple_notepads_path, method: :delete do %>
 <table border="1" style="border-color: #BDBDBD;float: right;" width="49%">
   <thead>
-    <tr style="background-color: beige;"><td colspan="5"  align="center"><h5><b>Diye</b></h5></td></tr>
+    <tr style="background-color: beige;"><td colspan="6"  align="center"><h5><b>Diye</b></h5></td></tr>
     <tr style="background-color: darkgray;">
+      <th>Delete</th>
       <th>Note date</th>
       <th>Name</th>
       <th>Amount</th>
@@ -47,6 +55,7 @@
   <tbody>
     <% @notepads_diye.each do |notepad| %>
       <tr>
+        <td><%= check_box_tag "notepad_ids[]", notepad.id %></td>
         <td><%= notepad.note_date %></td>
         <td><%= notepad.name %></td>
         <td><%= notepad.amount %></td>
@@ -55,7 +64,8 @@
       </tr>
     <% end %>
     <tr style="background-color: white">
-      <td colspan="5">
+      <td colspan="6">
+        <%= submit_tag "Delete Note"%>
         <div class="digg_pagination" style="float: right;">
         <%= will_paginate @notepads_diye, :param_name => 'diye_page', :container => false %>
         </div>
@@ -63,6 +73,7 @@
     </tr>
   </tbody>
 </table>
+<% end %>
 </div>
 <br>
 
