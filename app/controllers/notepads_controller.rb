@@ -5,7 +5,7 @@ class NotepadsController < ApplicationController
   # GET /notepads
   # GET /notepads.json
   def index
-    @notepads_liye = Notepad.where(status: 0).paginate(:page => params[:liye_page], :per_page => 2).order(created_at: :desc)
+    @notepads_liye = Notepad.where(status: 0).paginate(:page => params[:liye_page], :per_page => 10).order(created_at: :desc)
     @notepads_diye = Notepad.where(status: 1).paginate(:page => params[:diye_page], :per_page => 10).order(created_at: :desc)
   end
 
