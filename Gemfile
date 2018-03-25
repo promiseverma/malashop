@@ -10,6 +10,7 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'will_paginate', '~> 3.0.6'
 gem 'cowsay'
 gem 'devise'
+gem "paranoia", "~> 2.2"
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
