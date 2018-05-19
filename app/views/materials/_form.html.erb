@@ -3,7 +3,8 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :unit, collection: get_unit,prompt: "Select unit" %>
+    <%= f.input :unit, collection: get_unit,prompt: "Select unit", :onchange => show_piece %>
+    <%= f.input :piece_count, :placeholder => 'Piece', :class => "hideelem" %>
     <%= f.input :price %>
   </div>
 

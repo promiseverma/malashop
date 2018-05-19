@@ -15,7 +15,7 @@ class Material < ActiveRecord::Base
 	  else
 	    where(1)
 	  end
-  	end
+	end
 
   	def calculate_price
   		self.prices.each{|p| setprice(p)}
@@ -64,6 +64,11 @@ class Material < ActiveRecord::Base
 								new_price = price.quantity * (self.price/1000)
 							when "Gram"
 								new_price = price.quantity * self.price
+						end
+					when "Line"
+				  	case price.unit
+							when "Line"
+								new_price = (price.quantity * self.price)/self.piece_count
 						end
 					else
 						"You gave me #{a} -- I have no idea what to do with that."

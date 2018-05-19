@@ -11,7 +11,7 @@
 			<%= price.text_field :quantity, :id => "quantity_#{index}" %>
 		</td>	
 		<td> 
-			<%= price.select :unit, get_unit, {prompt: "Select unit"}, :id => "unit_#{index}", :onchange => "calculate_price('#{@product.materials[index].unit}', '#{@product.materials[index].price}', #{index}, this)" %>
+			<%= price.select :unit, get_unit, {prompt: "Select unit"}, :id => "unit_#{index}", :onchange => "calculate_price('#{@product.materials[index].unit}', '#{@product.materials[index].price}', #{index}, this, '#{@product.materials[index].piece_count}')" %>
 			
 		</td>
 		<td id="cal_<%= index %>"><%= price.text_field :calculated_price, :class => "cal_price"%></td>

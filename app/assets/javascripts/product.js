@@ -13,7 +13,7 @@ function delExecuter(){
       });
   });
 
-function calculate_price(unit, price, index, elem) {
+function calculate_price(unit, price, index, elem, piece_count) {
   switch(unit) {
     case "Pcs":
         if ($("#unit_"+index).val() == "Pcs") {
@@ -62,6 +62,11 @@ function calculate_price(unit, price, index, elem) {
         }
         else if($("#unit_"+index).val() == "Gram"){
           $("#cal_"+index+" .cal_price").val($("#quantity_"+index).val()*price);
+        }
+        break;
+    case "Line":
+        if ($("#unit_"+index).val() == "Line") {
+          $("#cal_"+index+" .cal_price").val(($("#quantity_"+index).val()*price)/parseInt(piece_count));
         }
         break;
     default:
