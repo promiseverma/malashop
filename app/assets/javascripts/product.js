@@ -65,8 +65,11 @@ function calculate_price(unit, price, index, elem, piece_count) {
         }
         break;
     case "Line":
-        if ($("#unit_"+index).val() == "Line") {
+        if ($("#unit_"+index).val() == "Pcs") {
           $("#cal_"+index+" .cal_price").val(($("#quantity_"+index).val()*price)/parseInt(piece_count));
+        }
+        else if($("#unit_"+index).val() == "Line"){
+          $("#cal_"+index+" .cal_price").val($("#quantity_"+index).val()*price);
         }
         break;
     default:

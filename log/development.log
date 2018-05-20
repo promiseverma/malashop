@@ -3884,3 +3884,237 @@ Processing by Devise::SessionsController#new as HTML
   Rendered layouts/_navigation.html.erb (1.2ms)
   Rendered layouts/_messages.html.erb (0.1ms)
 Completed 200 OK in 284ms (Views: 282.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-20 13:18:01 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (27.5ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by VisitorsController#index as HTML
+  [1m[35m (98.3ms)[0m  SELECT COUNT(*) FROM `users`
+  Rendered visitors/index.html.erb within layouts/application (118.4ms)
+  Rendered layouts/_navigation_links.html.erb (11.3ms)
+  Rendered layouts/_navigation.html.erb (14.0ms)
+  Rendered layouts/_messages.html.erb (0.6ms)
+Completed 200 OK in 898ms (Views: 761.8ms | ActiveRecord: 113.9ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-05-20 13:20:55 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (177.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 342ms (Views: 330.9ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-05-20 13:21:02 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"76PIbeXwwqLtZyoM9fMkS8k2HpYUgFVuRElUSVr0O8kPaLDdNAZ+YjMq/9xU1zo6DajlS4n07KQEBx55EibrQw==", "user"=>{"email"=>"promiseverma5@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (37.9ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'promiseverma5@gmail.com'  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (11.3ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2018-05-16 19:09:15.000000', `current_sign_in_at` = '2018-05-20 07:51:03.118020', `sign_in_count` = 4, `updated_at` = '2018-05-20 07:51:03.120142' WHERE `users`.`id` = 2[0m
+  [1m[35m (56.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 381ms (ActiveRecord: 105.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-20 13:21:03 +0530
+Processing by VisitorsController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+  Rendered visitors/index.html.erb within layouts/application (1.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered layouts/_navigation_links.html.erb (1.9ms)
+  Rendered layouts/_navigation.html.erb (2.7ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 187ms (Views: 186.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-05-20 13:21:08 +0530
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mProduct Load (39.8ms)[0m  SELECT  `products`.* FROM `products` WHERE (1)  ORDER BY `products`.`created_at` DESC LIMIT 10 OFFSET 0
+  [1m[36mItem Load (21.7ms)[0m  [1mSELECT `items`.* FROM `items` WHERE `items`.`product_id` IN (1)[0m
+  [1m[35mPrice Load (5.4ms)[0m  SELECT `prices`.* FROM `prices` WHERE `prices`.`product_id` IN (1)
+  [1m[36mMaterial Load (0.5ms)[0m  [1mSELECT `materials`.* FROM `materials` WHERE `materials`.`id` IN (1, 2, 3)[0m
+  [1m[35mImage Load (0.4ms)[0m  SELECT `images`.* FROM `images` WHERE `images`.`product_id` = 1
+  [1m[36m (29.4ms)[0m  [1mSELECT `materials`.`name` FROM `materials` INNER JOIN `prices` ON `materials`.`id` = `prices`.`material_id` WHERE `prices`.`product_id` = 1[0m
+  Rendered products/index.html.erb within layouts/application (400.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.9ms)
+  Rendered layouts/_navigation.html.erb (2.2ms)
+  Rendered layouts/_messages.html.erb (0.6ms)
+Completed 200 OK in 618ms (Views: 423.5ms | ActiveRecord: 157.7ms)
+
+
+Started GET "/products/1/calculate_total" for 127.0.0.1 at 2018-05-20 13:21:12 +0530
+Processing by ProductsController#calculate_total as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.3ms)[0m  SELECT  `products`.* FROM `products` WHERE `products`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mPrice Load (0.3ms)[0m  SELECT `prices`.* FROM `prices` WHERE `prices`.`product_id` = 1
+  [1m[36mMaterial Load (0.4ms)[0m  [1mSELECT `materials`.* FROM `materials` INNER JOIN `prices` ON `materials`.`id` = `prices`.`material_id` WHERE `prices`.`product_id` = 1[0m
+  Rendered products/_calculate_form.html.erb (98.8ms)
+  Rendered products/calculate_total.html.erb within layouts/application (107.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 282ms (Views: 278.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/products/1/calculate_total" for 127.0.0.1 at 2018-05-20 13:22:53 +0530
+Processing by ProductsController#calculate_total as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.3ms)[0m  SELECT  `products`.* FROM `products` WHERE `products`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mPrice Load (0.3ms)[0m  SELECT `prices`.* FROM `prices` WHERE `prices`.`product_id` = 1
+  [1m[36mMaterial Load (0.3ms)[0m  [1mSELECT `materials`.* FROM `materials` INNER JOIN `prices` ON `materials`.`id` = `prices`.`material_id` WHERE `prices`.`product_id` = 1[0m
+  Rendered products/_calculate_form.html.erb (17.5ms)
+  Rendered products/calculate_total.html.erb within layouts/application (27.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.8ms)
+  Rendered layouts/_navigation.html.erb (2.0ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 229ms (Views: 225.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/products/1/calculate_total" for 127.0.0.1 at 2018-05-20 13:26:11 +0530
+Processing by ProductsController#calculate_total as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.5ms)[0m  SELECT  `products`.* FROM `products` WHERE `products`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mPrice Load (0.3ms)[0m  SELECT `prices`.* FROM `prices` WHERE `prices`.`product_id` = 1
+  [1m[36mMaterial Load (0.8ms)[0m  [1mSELECT `materials`.* FROM `materials` INNER JOIN `prices` ON `materials`.`id` = `prices`.`material_id` WHERE `prices`.`product_id` = 1[0m
+  Rendered products/_calculate_form.html.erb (14.0ms)
+  Rendered products/calculate_total.html.erb within layouts/application (55.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 373ms (Views: 365.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/products/1/calculate_total" for 127.0.0.1 at 2018-05-20 13:27:46 +0530
+Processing by ProductsController#calculate_total as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.3ms)[0m  SELECT  `products`.* FROM `products` WHERE `products`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mPrice Load (0.5ms)[0m  SELECT `prices`.* FROM `prices` WHERE `prices`.`product_id` = 1
+  [1m[36mMaterial Load (0.4ms)[0m  [1mSELECT `materials`.* FROM `materials` INNER JOIN `prices` ON `materials`.`id` = `prices`.`material_id` WHERE `prices`.`product_id` = 1[0m
+  Rendered products/_calculate_form.html.erb (46.1ms)
+  Rendered products/calculate_total.html.erb within layouts/application (51.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.5ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 281ms (Views: 243.8ms | ActiveRecord: 4.9ms)
+
+
+Started PATCH "/products/1" for 127.0.0.1 at 2018-05-20 13:28:01 +0530
+Processing by ProductsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7X1JdJS7nWVIF3InSXKHlvMp82Z35D6fsk/U/mHP5garNXXd4SQGGJIX4gyToQZUvTkPoYgZnEMeuwPO6v1pjg==", "product"=>{"prices_attributes"=>{"0"=>{"quantity"=>"11", "unit"=>"Line", "calculated_price"=>"1221", "id"=>"1"}, "1"=>{"quantity"=>"23", "unit"=>"Pcs", "calculated_price"=>"4600.0", "id"=>"2"}, "2"=>{"quantity"=>"12", "unit"=>"Line", "calculated_price"=>"600.0", "id"=>"3"}}, "piece"=>"10", "majdoori"=>"12.0", "total_price"=>"7717.200000000001"}, "id"=>"1"}
+  [1m[35mProduct Load (0.3ms)[0m  SELECT  `products`.* FROM `products` WHERE `products`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mPrice Load (0.4ms)[0m  [1mSELECT `prices`.* FROM `prices` WHERE `prices`.`product_id` = 1 AND `prices`.`id` IN (1, 2, 3)[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE `products` SET `total_price` = 7717.2, `updated_at` = '2018-05-20 07:58:01.711920' WHERE `products`.`id` = 1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE `prices` SET `calculated_price` = 1221.0, `updated_at` = '2018-05-20 07:58:01.713886' WHERE `prices`.`id` = 1[0m
+  [1m[35m (91.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/products/1
+Completed 302 Found in 109ms (ActiveRecord: 93.1ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2018-05-20 13:28:01 +0530
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.4ms)[0m  [1mSELECT  `products`.* FROM `products` WHERE `products`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mImage Load (0.4ms)[0m  [1mSELECT `images`.* FROM `images` WHERE `images`.`product_id` = 1[0m
+  Rendered products/show.html.erb within layouts/application (28.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.7ms)
+  Rendered layouts/_navigation.html.erb (1.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 242ms (Views: 237.6ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-05-20 13:28:03 +0530
+Processing by ProductsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT  `products`.* FROM `products` WHERE (1)  ORDER BY `products`.`created_at` DESC LIMIT 10 OFFSET 0[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT `items`.* FROM `items` WHERE `items`.`product_id` IN (1)
+  [1m[36mPrice Load (0.3ms)[0m  [1mSELECT `prices`.* FROM `prices` WHERE `prices`.`product_id` IN (1)[0m
+  [1m[35mMaterial Load (0.4ms)[0m  SELECT `materials`.* FROM `materials` WHERE `materials`.`id` IN (1, 2, 3)
+  [1m[36mImage Load (0.3ms)[0m  [1mSELECT `images`.* FROM `images` WHERE `images`.`product_id` = 1[0m
+  [1m[35m (0.9ms)[0m  SELECT `materials`.`name` FROM `materials` INNER JOIN `prices` ON `materials`.`id` = `prices`.`material_id` WHERE `prices`.`product_id` = 1
+  Rendered products/index.html.erb within layouts/application (33.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 206ms (Views: 200.3ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/products/1/calculate_total" for 127.0.0.1 at 2018-05-20 13:28:06 +0530
+Processing by ProductsController#calculate_total as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT  `products`.* FROM `products` WHERE `products`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mPrice Load (0.3ms)[0m  [1mSELECT `prices`.* FROM `prices` WHERE `prices`.`product_id` = 1[0m
+  [1m[35mMaterial Load (0.4ms)[0m  SELECT `materials`.* FROM `materials` INNER JOIN `prices` ON `materials`.`id` = `prices`.`material_id` WHERE `prices`.`product_id` = 1
+  Rendered products/_calculate_form.html.erb (11.4ms)
+  Rendered products/calculate_total.html.erb within layouts/application (18.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 194ms (Views: 189.4ms | ActiveRecord: 1.5ms)
+
+
+Started PATCH "/products/1" for 127.0.0.1 at 2018-05-20 13:28:13 +0530
+Processing by ProductsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"79bGGNa/qFmyjmWvEwuEBJ7UAEHkwuJY2F+McTOrxPqpnvqxoyAzJGiO9YTJ2AXG0MT8hhs/QIR0q1tBuJlLcg==", "product"=>{"prices_attributes"=>{"0"=>{"quantity"=>"11", "unit"=>"Pcs", "calculated_price"=>"101.75", "id"=>"1"}, "1"=>{"quantity"=>"23", "unit"=>"Pcs", "calculated_price"=>"4600.0", "id"=>"2"}, "2"=>{"quantity"=>"12", "unit"=>"Line", "calculated_price"=>"600.0", "id"=>"3"}}, "piece"=>"10", "majdoori"=>"12.0", "total_price"=>"6374.099999999999"}, "id"=>"1"}
+  [1m[36mProduct Load (0.4ms)[0m  [1mSELECT  `products`.* FROM `products` WHERE `products`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mPrice Load (2.1ms)[0m  SELECT `prices`.* FROM `prices` WHERE `prices`.`product_id` = 1 AND `prices`.`id` IN (1, 2, 3)
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE `products` SET `total_price` = 6374.1, `updated_at` = '2018-05-20 07:58:13.512531' WHERE `products`.`id` = 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE `prices` SET `calculated_price` = 101.75, `unit` = 'Pcs', `updated_at` = '2018-05-20 07:58:13.514986' WHERE `prices`.`id` = 1
+  [1m[36m (125.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/products/1
+Completed 302 Found in 145ms (ActiveRecord: 129.6ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2018-05-20 13:28:13 +0530
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.4ms)[0m  SELECT  `products`.* FROM `products` WHERE `products`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mImage Load (0.3ms)[0m  SELECT `images`.* FROM `images` WHERE `images`.`product_id` = 1
+  Rendered products/show.html.erb within layouts/application (14.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.7ms)
+  Rendered layouts/_navigation.html.erb (2.2ms)
+  Rendered layouts/_messages.html.erb (0.3ms)
+Completed 200 OK in 202ms (Views: 197.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-05-20 13:28:15 +0530
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mProduct Load (0.3ms)[0m  SELECT  `products`.* FROM `products` WHERE (1)  ORDER BY `products`.`created_at` DESC LIMIT 10 OFFSET 0
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT `items`.* FROM `items` WHERE `items`.`product_id` IN (1)[0m
+  [1m[35mPrice Load (0.3ms)[0m  SELECT `prices`.* FROM `prices` WHERE `prices`.`product_id` IN (1)
+  [1m[36mMaterial Load (0.4ms)[0m  [1mSELECT `materials`.* FROM `materials` WHERE `materials`.`id` IN (1, 2, 3)[0m
+  [1m[35mImage Load (0.3ms)[0m  SELECT `images`.* FROM `images` WHERE `images`.`product_id` = 1
+  [1m[36m (1.4ms)[0m  [1mSELECT `materials`.`name` FROM `materials` INNER JOIN `prices` ON `materials`.`id` = `prices`.`material_id` WHERE `prices`.`product_id` = 1[0m
+  Rendered products/index.html.erb within layouts/application (30.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 209ms (Views: 203.6ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/products/1/calculate_total" for 127.0.0.1 at 2018-05-20 13:28:17 +0530
+Processing by ProductsController#calculate_total as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProduct Load (0.3ms)[0m  SELECT  `products`.* FROM `products` WHERE `products`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mPrice Load (0.4ms)[0m  SELECT `prices`.* FROM `prices` WHERE `prices`.`product_id` = 1
+  [1m[36mMaterial Load (0.4ms)[0m  [1mSELECT `materials`.* FROM `materials` INNER JOIN `prices` ON `materials`.`id` = `prices`.`material_id` WHERE `prices`.`product_id` = 1[0m
+  Rendered products/_calculate_form.html.erb (10.0ms)
+  Rendered products/calculate_total.html.erb within layouts/application (16.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 192ms (Views: 189.1ms | ActiveRecord: 1.2ms)

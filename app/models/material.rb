@@ -67,8 +67,10 @@ class Material < ActiveRecord::Base
 						end
 					when "Line"
 				  	case price.unit
-							when "Line"
+							when "Pcs"
 								new_price = (price.quantity * self.price)/self.piece_count
+							when "Line"
+								new_price = price.quantity * self.price
 						end
 					else
 						"You gave me #{a} -- I have no idea what to do with that."
