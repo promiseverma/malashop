@@ -8,7 +8,7 @@
 			<%= @product.materials[index].name %>&nbsp;&nbsp;[<%= @product.materials[index].unit %>, <%= @product.materials[index].price%>]
 		</td>
 		<td>
-			<%= price.text_field :quantity, :id => "quantity_#{index}" %>
+			<%= price.text_field :quantity, :id => "quantity_#{index}", :onchange => "calculate_price('#{@product.materials[index].unit}', '#{@product.materials[index].price}', #{index}, this, '#{@product.materials[index].piece_count}')" %>
 		</td>	
 		<td> 
 			<%= price.select :unit, get_unit, {prompt: "Select unit"}, :id => "unit_#{index}", :onchange => "calculate_price('#{@product.materials[index].unit}', '#{@product.materials[index].price}', #{index}, this, '#{@product.materials[index].piece_count}')" %>
